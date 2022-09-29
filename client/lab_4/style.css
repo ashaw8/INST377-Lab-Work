@@ -91,6 +91,7 @@ form {
 */
 
 .header h1 {
+  border: dotted;
   display: block;
   /* this will push other blocks out of the way */
 
