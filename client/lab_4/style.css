@@ -74,7 +74,6 @@ form {
   justify-content: space-evenly;
   align-items: start;
   flex:1;
-  border: ridge;
 }
 
 .header {
@@ -142,8 +141,7 @@ form {
   background-color: rgba(255, 224, 138, 0.7);
   flex: 1 2 auto;
   margin: 1rem;
-  align-items: center;
-  max-width: 450px;
+  align-items: center;  
   display: flex;
   flex-direction: column;
 }
@@ -305,5 +303,8 @@ form label {
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
       background-color: rgba(204, 8, 162, 0.65);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 }
