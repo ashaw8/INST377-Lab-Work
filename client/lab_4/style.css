@@ -133,14 +133,14 @@ form {
 }
 
 .left_section {
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: #BFD7B5;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: #413C58;
+  background-color: #BFD7B5;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;  
