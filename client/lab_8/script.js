@@ -99,8 +99,8 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      currentlist = filterList(currentlist, event.target.value);
-      injectHTML(currentlist);
+      const filteredList = filterList(currentlist, event.target.value);
+      injectHTML(filteredList);
     });
 
     form.addEventListener('submit', (submitEvent) => {

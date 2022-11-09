@@ -18,19 +18,19 @@ function injectHTML(list) {
     listEl.appendChild(el);
   });
   /*
-    ## JS and HTML Injection
-      There are a bunch of methods to inject text or HTML into a document using JS
-      Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-      But they're useful for starting to understand how websites work
-      the usual ones are element.innerText and element.innerHTML
-      Here's an article on the differences if you want to know more:
-      https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
+      ## JS and HTML Injection
+        There are a bunch of methods to inject text or HTML into a document using JS
+        Mainly, they're considered "unsafe" because they can spoof a page pretty easily
+        But they're useful for starting to understand how websites work
+        the usual ones are element.innerText and element.innerHTML
+        Here's an article on the differences if you want to know more:
+        https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
 
-    ## What to do in this function
-      - Accept a list of restaurant objects
-      - using a .forEach method, inject a list element into your index.html for every el
-      - Display the name of that restaurant and what category of food it is
-  */
+      ## What to do in this function
+        - Accept a list of restaurant objects
+        - using a .forEach method, inject a list element into your index.html for every el
+        - Display the name of that restaurant and what category of food it is
+    */
 }
 
 function processRestaurants(list) {
@@ -53,11 +53,11 @@ function filterList(array, filterInputValue) {
 
 async function mainEvent() {
   /*
-      ## Main Event
-        Separating your main programming from your side functions will help you organize your thoug
-        When you're not working in a heavily-commented "learning" file, this also is more legible
-        If you separate your work, when one piece is complete, you can save it and trust it
-    */
+## Main Event
+    Separating your main programming from your side functions will help you organize your thoug
+    When you're not working in a heavily-commented "learning" file, this also is more legible
+    If you separate your work, when one piece is complete, you can save it and trust it
+*/
 
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
@@ -66,18 +66,18 @@ async function mainEvent() {
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
-      Let's get some data from the API - it will take a second or two to load
-      This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.
-      It's at about line 27 - go have a look and see what we're retrieving and sending back.
-     */
+    Let's get some data from the API - it will take a second or two to load
+    This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.
+    It's at about line 27 - go have a look and see what we're retrieving and sending back.
+    */
   const results = await fetch('/api/foodServicePG');
   const arrayFromJson = await results.json(); // here is where we get the data from our request as J
 
   /*
-      Below this comment, we log out a table of all the results using "dot notation"
-      An alternate notation would be "bracket notation" - arrayFromJson["data"]
-      Dot notation is preferred in JS unless you have a good reason to use brackets
-      The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we
+    Below this comment, we log out a table of all the results using "dot notation"
+    An alternate notation would be "bracket notation" - arrayFromJson["data"]
+    Dot notation is preferred in JS unless you have a good reason to use brackets
+    The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we
     */
   // console.table(arrayFromJson.data);
 
@@ -99,8 +99,8 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
-      currentlist = filterList(currentlist, event.target.value);
-      injectHTML(currentlist);
+      const filteredList = filterList(currentlist, event.target.value);
+      injectHTML(filteredList);
     });
 
     form.addEventListener('submit', (submitEvent) => {
