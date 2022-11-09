@@ -51,6 +51,30 @@ function filterList(array, filterInputValue) {
   });
 }
 
+function initMap() {
+  console.log('initmap');
+  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  return map;
+}
+
+function markerPlace(array, map) {
+  // const marker = L.marker([51.5, -0.09]).addTo(map);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  array.forEach((item) => {
+    const {coordinates} = item.geocoded_column_1;
+    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+  });
+}
+
 async function mainEvent() {
   /*
 ## Main Event
@@ -58,7 +82,7 @@ async function mainEvent() {
     When you're not working in a heavily-commented "learning" file, this also is more legible
     If you separate your work, when one piece is complete, you can save it and trust it
 */
-
+  const pageMap = initMap();
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
@@ -101,6 +125,7 @@ async function mainEvent() {
       console.log(event.target.value);
       const filteredList = filterList(currentlist, event.target.value);
       injectHTML(filteredList);
+      markerPlace(filteredList, pageMap);
     });
 
     form.addEventListener('submit', (submitEvent) => {
@@ -111,7 +136,7 @@ async function mainEvent() {
       currentlist = processRestaurants(arrayFromJson.data);
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentlist);
-
+      markerPlace(currentlist, pageMap);
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time
       // We also have access to some form values, so we could filter the list based on name
