@@ -14,7 +14,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aidan Shawyers INST 377 Labs</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
     <link rel="stylesheet" href="style.css" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+    
   </head>
   <body>
     <div class="wrapper">
@@ -36,6 +44,7 @@
         <!--Right Section-->
         <div class="right_section box">
           <h3>Local Restaurant</h3>
+          <div id="map"></div>
           <div class="restaurant_list box" id="restaurant_list">A list of local restauants from an API</div>
         </div>
       </div>

@@ -283,7 +283,13 @@ Form Styles
     background-color: aqua;
     /* Pick a good background colour for your hover pseudoclass */
   }
-  
+  /* MAP STYLES */
+  #map { display: block;
+        height: 400px;
+        width: 400px;
+        border: 2px dashed;
+        margin-bottom: 1rem; }
+
   form input {
       /* This is a hack to make sure our boxes line up with one another nicely */
       width: 100%;
